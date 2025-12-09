@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/felipematheus1337/GoBookReviewAPI/schemas"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -33,7 +34,7 @@ func InitializeMySQL() (*gorm.DB, error) {
 		return nil, fmt.Errorf("Error connecting to database: %v", err)
 	}
 
-	err = db.AutoMigrate(&schemas.Book, &schemas.Review)
+	err = db.AutoMigrate(&schemas.Book{}, &schemas.Review{})
 
 	if err != nil {
 		return nil, fmt.Errorf("Error auto-migrating database: %v", err)
