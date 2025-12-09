@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"github.com/felipematheus1337/GoBookReviewAPI/service"
 	"github.com/gin-gonic/gin"
 )
 

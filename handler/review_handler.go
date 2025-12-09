@@ -1,6 +1,9 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/felipematheus1337/GoBookReviewAPI/service"
+	"github.com/gin-gonic/gin"
+)
 
 type ReviewHandler struct {
 	Service service.ReviewService
