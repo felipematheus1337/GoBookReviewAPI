@@ -13,7 +13,7 @@ func CreateToSchema(bookDTO dto.BookDTO) *schemas.Book {
 	}
 }
 
-func EntityToResponse(book schemas.Book) *schemas.BookResponse {
+func EntityToResponse(book *schemas.Book) *schemas.BookResponse {
 	return &schemas.BookResponse{
 		Title:         book.Title,
 		PublishedYear: book.PublishedYear,

@@ -1,14 +1,17 @@
 package service
 
 import (
+	"errors"
+
 	"github.com/felipematheus1337/GoBookReviewAPI/dto"
 	_ "github.com/felipematheus1337/GoBookReviewAPI/dto"
+	"github.com/felipematheus1337/GoBookReviewAPI/mapper"
 	"github.com/felipematheus1337/GoBookReviewAPI/schemas"
 	"gorm.io/gorm"
 )
 
 type BookService interface {
-	Create(dto dto.BookDTO) (schemas.BookResponse, error)
+	Create(dto dto.BookDTO) (*schemas.BookResponse, error)
 	List() ([]schemas.BookResponse, error)
 }
 
@@ -20,7 +23,25 @@ func NewBookService(db *gorm.DB) *bookService {
 	return &bookService{db: db}
 }
 
-func (s *bookService) Create(dto dto.BookDTO) (schemas.BookResponse, error) {
+func (s *bookService) Create(bookDTO dto.BookDTO) (*schemas.BookResponse, error) {
+
+	book := mapper.CreateToSchema(bookDTO)
+
+	if book != nil {
+		return &schemas.BookResponse{}, errors.New("Falha ao serializar DTO.")
+	}
+
+	if err := s.db.Create(&book).Error; err != nil {
+		return &schemas.BookResponse{}, err
+	}
+
+	response := mapper.EntityToResponse(book)
+
+	if response != nil {
+		return &schemas.BookResponse{}, errors.New("Falha ao crear entity book response.")
+	}
+
+	return response, nil
 
 }
 
