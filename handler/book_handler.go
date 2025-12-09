@@ -34,4 +34,14 @@ func (h *BookHandler) Create(ctx *gin.Context) {
 	sendSuccess(ctx, "create-book", response, http.StatusCreated)
 }
 
-func (h *BookHandler) List(ctx *gin.Context) {}
+func (h *BookHandler) List(ctx *gin.Context) {
+
+	books, err := h.Service.List()
+
+	if err != nil {
+		sendError(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	sendSuccess(ctx, "list-books", books, http.StatusOK)
+}

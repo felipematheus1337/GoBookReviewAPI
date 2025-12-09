@@ -9,7 +9,7 @@ import (
 
 type BookService interface {
 	Create(dto dto.BookDTO) (schemas.BookResponse, error)
-	List()
+	List() ([]schemas.BookResponse, error)
 }
 
 type bookService struct {
