@@ -13,7 +13,7 @@ var (
 func Init() error {
 	var err error
 
-	db, err := InitializeMySQL()
+	db, err = InitializeMySQL()
 
 	if err != nil {
 		return fmt.Errorf("error initializing database: %v", err)
