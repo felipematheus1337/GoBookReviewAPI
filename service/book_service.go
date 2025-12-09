@@ -19,3 +19,11 @@ type bookService struct {
 func NewBookService(db *gorm.DB) *bookService {
 	return &bookService{db: db}
 }
+
+func (s *bookService) Create(dto dto.BookDTO) (schemas.BookResponse, error) {
+
+}
+
+func (s *bookService) List() ([]schemas.BookResponse, error) {
+
+}

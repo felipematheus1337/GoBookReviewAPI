@@ -8,9 +8,9 @@ import (
 
 type Book struct {
 	gorm.Model
-	title         string
-	author        string
-	publishedYear uint16
+	Title         string
+	Author        string
+	PublishedYear uint16
 }
 
 type Review struct {
@@ -22,11 +22,11 @@ type Review struct {
 }
 
 type BookResponse struct {
-	Id            uint      `json:"id"`
-	Title         string    `json:"title"`
-	Author        string    `json:"author"`
-	PublishedYear uint16    `json:"published_year"`
-	CreatedAt     time.Time `json:"created_at"`
-	UpdatedAt     time.Time `json:"updated_at"`
-	DeletedAt     time.Time `json:"deleted_at"`
+	Id            uint           `json:"id"`
+	Title         string         `json:"title"`
+	Author        string         `json:"author"`
+	PublishedYear uint16         `json:"published_year"`
+	CreatedAt     time.Time      `json:"created_at"`
+	UpdatedAt     time.Time      `json:"updated_at"`
+	DeletedAt     gorm.DeletedAt `json:"deletedAt"`
 }
