@@ -16,9 +16,9 @@ type Book struct {
 type Review struct {
 	gorm.Model
 	BookId   uint
-	reviewer string
-	rating   int
-	comment  string
+	Reviewer string
+	Rating   int
+	Comment  string
 }
 
 type BookResponse struct {
@@ -29,4 +29,15 @@ type BookResponse struct {
 	CreatedAt     time.Time      `json:"created_at"`
 	UpdatedAt     time.Time      `json:"updated_at"`
 	DeletedAt     gorm.DeletedAt `json:"deletedAt"`
+}
+
+type ReviewResponse struct {
+	Id        uint           `json:"id"`
+	Reviewer  string         `json:"reviewer"`
+	BookId    uint           `json:"book_id"`
+	Rating    int            `json:"rating"`
+	Comment   string         `json:"comment"`
+	CreatedAt time.Time      `json:"created_at"`
+	UpdatedAt time.Time      `json:"updated_at"`
+	DeletedAt gorm.DeletedAt `json:"deletedAt"`
 }

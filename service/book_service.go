@@ -37,7 +37,7 @@ func (s *bookService) Create(bookDTO dto.BookDTO) (*schemas.BookResponse, error)
 
 	response := mapper.EntityToResponse(book)
 
-	if response != nil {
+	if response == nil {
 		return &schemas.BookResponse{}, errors.New("Falha ao crear entity book response.")
 	}
 
