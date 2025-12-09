@@ -47,4 +47,21 @@ func (s *bookService) Create(bookDTO dto.BookDTO) (*schemas.BookResponse, error)
 
 func (s *bookService) List() ([]schemas.BookResponse, error) {
 
+	var booksResponse []schemas.BookResponse
+
+	var books []schemas.Book
+
+	if err := s.db.Find(&books).Error; err != nil {
+		return []schemas.BookResponse{}, err
+	}
+
+	for _, bookFinded := range books {
+		var b *schemas.BookResponse
+
+		b = mapper.EntityToResponse(&bookFinded)
+
+		booksResponse = append(booksResponse, *b)
+	}
+
+	return booksResponse, nil
 }
