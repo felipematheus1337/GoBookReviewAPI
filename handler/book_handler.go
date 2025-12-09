@@ -13,6 +13,8 @@ func NewBookHandler(s service.BookService) *BookHandler {
 	return &BookHandler{Service: s}
 }
 
-func (h *BookHandler) Create(ctx *gin.Context) {}
+func (h *BookHandler) Create(ctx *gin.Context) {
+	var bookDTO dto.BookDTO
+}
 
 func (h *BookHandler) List(ctx *gin.Context) {}
